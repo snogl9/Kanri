@@ -1,10 +1,12 @@
 package it.bjjbz.kanri.person;
 
 import com.sun.istack.NotNull;
+import it.bjjbz.kanri.payment.Payment;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Set;
 
 @Entity
 @Table(name = "KANRI_PERSON")
@@ -38,6 +40,9 @@ public class Person {
 
     @Transient
     private Integer age;
+
+    @OneToMany(mappedBy="kanri_person")
+    private Set<Payment> paymentSet;
 
     public Person() {
     }
